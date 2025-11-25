@@ -1,0 +1,358 @@
+:root {
+  --brand-900: #004282;
+  --brand-700: #0b5ca8;
+  --brand-100: #e6f4f1;
+  --text-900: #0e1b2a;
+  --text-700: #1f3650;
+  --bg: #ffffff;
+  --accent: #1f7a35;
+
+  --fs-xs: clamp(12px, 0.8vw, 20px);
+  --fs-sm: clamp(18px, 1vw, 24px);
+  --fs-md: clamp(30px, 1.4vw, 28px);
+  --fs-lg: clamp(20px, 2vw, 40px);
+  --fs-xl: clamp(28px, 3vw, 64px);
+  --fs-xxl: clamp(36px, 4.2vw, 92px);
+
+  --radius-xl: 22px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  color: var(--text-900);
+  background: var(--brand-100);
+}
+
+.screen {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  gap: min(1.4vh, 16px);
+  padding: min(2dvh, 24px) min(2dvw, 28px);
+  box-sizing: border-box;
+}
+
+/* Header */
+header,
+.agenda header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  background: var(--bg);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.logo img {
+  height: clamp(73px, 5vw, 60px);
+}
+.title {
+ 
+  text-align: center;
+  font-weight: 800;
+  font-size: 3rem;
+  color: var(--brand-900);
+  text-shadow: 3px 3px 4px rgba(0,0,0,0.5);
+}
+.datetime {
+  text-align: right;
+  font-size: var(--fs-md);
+  line-height: 1.15;
+}
+
+/* Main */
+main {
+  margin-top: 30px;
+  height: 90%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: min(1.4vh, 16px);
+  min-height: 0;
+}
+
+
+
+/* Highlight (Slideshow com legenda sobreposta) */
+.highlight {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:#e6f4f1; /* fundo para quando usar contain */
+}
+
+.slideshow figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.slideshow figure.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 🔹 imagens e vídeos SEMPRE inteiros, sem cortar */
+.slideshow img,
+.slideshow video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  background:#e6f4f1;
+}
+
+/* Legenda sobreposta */
+.slideshow figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  font-size: var(--fs-sm);
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+  backdrop-filter: blur(2px);
+}
+
+.slideshow .fvpInf {
+  border-radius: var(--radius-xl);
+  height: 100%;
+  width: 60%;
+}
+
+/* Agenda */
+.agenda {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  overflow: hidden;
+}
+
+
+.agenda header {
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.agenda h3 {
+  font-weight: bold;
+  margin: auto;
+  font-size: 1.8rem;
+  line-height: 1; 
+  text-align: center;
+  text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.76);
+}
+
+/* Mini slideshow dentro da agenda */
+.mini-slideshow {
+  margin-top: 32px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* esconde todas as figuras menos a ativa */
+.mini-slideshow figure {
+  display: none;
+  margin: 0;
+}
+
+.mini-slideshow figure.active {
+  display: block;
+}
+
+.mini-slideshow img {
+  width: 100%;   /* estica na largura */
+  height: 14rem;  /* mantém proporção */
+  display: block;
+  border-radius: var(--radius-xl);
+}
+
+/* Footer */
+footer {
+  margin-top: -20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+footer .contacts {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer .contacts .pill {
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: .5em .9em;
+  font-size: var(--fs-sm);
+}
+
+footer .qr {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border: 6px solid #f1f5f9;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+
+footer .qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  html, body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .screen {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    height: auto;
+    gap: 16px;
+  }
+
+ 
+  .logo img {
+    height: 70px;
+  }
+
+
+  .slideshow .fvpInf {
+  width: 100%;
+}
+
+  .title {
+    font-size: var(--fs-lg);
+    text-align: center;
+  }
+
+  .datetime {
+    font-size: 1rem;
+    
+  }
+
+  main {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .highlight,
+  .agenda {
+    height: auto;
+    width: 100%;
+  }
+
+  .slideshow,
+  .slideshow figure,
+  .slideshow img,
+  .slideshow video {
+
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+
+  .slideshow figcaption {
+    font-size: var(--fs-xs);
+    padding: 0.4em 0.8em;
+  }
+
+  .mini-slideshow img {
+    height: auto;
+    object-fit: contain;
+  }
+  .mini-slideshow {
+  margin-top: 8%;
+  }
+
+  footer {
+    margin-top: 0.5%;
+    align-items: flex-start;
+    gap: 12px;
+    height: auto;
+    padding: 12px;
+  }
+
+  footer .contacts {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  footer .qr {
+    width: 80px;
+    height: 80px;
+  }
+
+  footer .contacts .pill {
+    font-size: var(--fs-xs);
+    padding: 0.5em 1em;
+  }
+}

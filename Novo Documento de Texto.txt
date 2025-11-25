@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Informativo Digital – Faculdade Vale do Pajeú</title>
+  <style>
+   
+  </style>
+<body>
+  <div class="screen">
+    <header>
+      <div class="logo">
+        <img src="imagesLogo.png" alt="Faculdade Vale do Pajeú" />
+      </div>
+      <div class="title">COMUNICADO SEMANAL</div>
+      <div class="datetime">
+        <div id="date">--/--/----</div>
+        <div id="time">--:--</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card highlight">
+        <div class="slideshow">
+          <figure>
+            <img src="image/foto1.png" alt="Slide 1">
+            <figcaption></figcaption>
+          </figure>
+          <figure>
+            <img src="image/foto2.png" alt="Slide 2">
+            <figcaption></figcaption>
+          </figure>
+          <figure>
+            <img src="image/foto3.jpeg" alt="Slide 3">
+            <figcaption>Nesta quinta edição do segundo semestre letivo de 2025, a Comissão Temática da OAB promoveu,
+              em São José do Egito, um evento especial com o tema Direito Ambiental. 🌱⚖️</figcaption>
+          </figure>
+          <figure>
+            <img src="image/foto4.jpeg" alt="Slide 4">
+            <figcaption>💛Falar sobre saúde mental é salvar vidas. 10 de setembro | Dia Mundial de Prevenção ao Suicídio 
+              Nesta data, reafirmamos nosso compromisso com a valorização da vida e com a promoção da saúde mental.
+              A prevenção ao suicídio é uma responsabilidade coletiva, que exige escuta, acolhimento e apoio contínuo.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <aside class="card agenda">
+        <header>
+          <h3>AGENDA</h3>
+          <span id="agenda-week">Semana</span>
+        </header>
+        <div class="list">
+          <div class="item"><span class="dot"></span><div><div class="when">Seg • </div></div></div>
+          <div class="item"><span class="dot"></span><div><div class="when">Ter • </div></div></div>
+          <div class="item"><span class="dot"></span><div><div class="when">Qua • </div></div></div>
+          <div class="item"><span class="dot"></span><div><div class="when">Qui • </div></div></div>
+          <div class="item"><span class="dot"></span><div><div class="when">Sex • </div></div></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="contacts">
+        <a href="https://wa.me/5581998725305" target="_blank" class="pill">
+          <i class="fab fa-whatsapp"></i> WhatsApp: (81) 99872-5305
+        </a>
+        <a href="https://faculdadevaledopajeu.edu.br/" target="_blank" class="pill">
+          <i class="fas fa-globe"></i> faculdadevaledopajeu.edu.br
+        </a>
+        <a href="https://instagram.com/faculdadevaledopajeu" target="_blank" class="pill">
+          <i class="fab fa-instagram"></i> @faculdadevaledopajeu
+        </a>
+        <div class="qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fvaledopajeu.edu.br" alt="QR Code do site"/>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Relógio e semana
+    const dateEl = document.getElementById('date');
+    const timeEl = document.getElementById('time');
+    const agendaWeekEl = document.getElementById('agenda-week');
+
+    function pad(n) { return n.toString().padStart(2, '0'); }
+
+    function updateClock() {
+      const now = new Date();
+      dateEl.textContent = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+      timeEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      const start = new Date(now); start.setDate(now.getDate() - now.getDay() + 1);
+      const end = new Date(start); end.setDate(start.getDate() + 4);
+      const months = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+      agendaWeekEl.textContent = `${pad(start.getDate())}–${pad(end.getDate())} ${months[end.getMonth()]}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Slideshow automático com legenda
+    const slides = document.querySelectorAll('.slideshow figure');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((figure, i) => {
+        figure.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+
+    showSlide(current);
+    setInterval(nextSlide, 7000); // troca a cada 7s
+  </script>
+</body>
+</html>
+
+
+
+:root {
+  --brand-900: #004282;
+  --brand-700: #0b5ca8;
+  --brand-100: #e6f4f1;
+  --text-900: #0e1b2a;
+  --text-700: #1f3650;
+  --bg: #ffffff;
+  --accent: #1f7a35;
+
+  --fs-xs: clamp(12px, 0.8vw, 20px);
+  --fs-sm: clamp(14px, 1vw, 24px);
+  --fs-md: clamp(16px, 1.4vw, 28px);
+  --fs-lg: clamp(20px, 2vw, 40px);
+  --fs-xl: clamp(28px, 3vw, 64px);
+  --fs-xxl: clamp(36px, 4.2vw, 92px);
+
+  --radius-xl: 22px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  color: var(--text-900);
+  background: var(--brand-100);
+}
+
+.screen {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  gap: min(1.4vh, 16px);
+  padding: min(2dvh, 24px) min(2dvw, 28px);
+  box-sizing: border-box;
+}
+
+/* Header */
+header,
+.agenda header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  background: var(--bg);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.logo img {
+  height: clamp(40px, 5vw, 50px);
+}
+.title {
+  text-align: center;
+  font-weight: 800;
+  font-size: var(--fs-xl);
+  color: var(--brand-900);
+}
+.datetime {
+  text-align: right;
+  font-size: var(--fs-md);
+  line-height: 1.15;
+}
+
+/* Main */
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: min(1.4vh, 16px);
+  min-height: 0;
+}
+
+/* Highlight (Slideshow com legenda sobreposta) */
+.highlight {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slideshow figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.slideshow figure.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Legenda sobreposta */
+.slideshow figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* fundo preto com transparência */
+  color: #fff;
+  text-align: center;
+  font-size: var(--fs-sm);
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+  backdrop-filter: blur(2px); /* opcional: leve desfoque do fundo */
+}
+
+/* Agenda */
+.agenda {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  overflow: hidden;
+}
+
+.agenda h3 {
+  margin: 0;
+  font-size: var(--fs-xl);
+  color: #fff;
+}
+
+.agenda header {
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.agenda .list {
+  padding: clamp(12px, 1.4vw, 22px);
+  display: grid;
+  gap: clamp(10px, 1.1vw, 18px);
+}
+
+.agenda .item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .8em;
+  font-size: var(--fs-md);
+}
+
+.agenda .dot {
+  width: .9em;
+  height: .9em;
+  border-radius: 50%;
+  background: var(--brand-700);
+  margin-top: .3em;
+}
+
+.agenda .when {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  opacity: .85;
+}
+
+/* Footer */
+footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+footer .contacts {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer .contacts .pill {
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: .5em .9em;
+  font-size: var(--fs-sm);
+}
+
+footer .qr {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 6px solid #f1f5f9;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+
+footer .qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Media Query para Chromebook 11.6" */
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+  html, body, .screen {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .highlight .slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-100);
+  }
+
+  .highlight .slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  header, footer, .agenda header {
+    height: 50px;
+    padding: 0 12px;
+  }
+
+  .title {
+    font-size: clamp(20px, 2vw, 26px);
+  }
+
+  .datetime {
+    font-size: clamp(14px, 1.6vw, 18px);
+  }
+
+  .agenda h3 {
+    font-size: clamp(16px, 1.8vw, 22px);
+  }
+
+  .agenda .item {
+    font-size: clamp(14px, 1.6vw, 18px);
+  }
+
+  footer .contacts .pill {
+    font-size: clamp(12px, 1.4vw, 16px);
+    padding: .4em .7em;
+  }
+}
+
+
+
+
+
+
+
+novo CSS 31/10/2025
+
+
+
+:root {
+  --brand-900: #004282;
+  --brand-700: #0b5ca8;
+  --brand-100: #e6f4f1;
+  --text-900: #0e1b2a;
+  --text-700: #1f3650;
+  --bg: #ffffff;
+  --accent: #1f7a35;
+
+  --fs-xs: clamp(12px, 0.8vw, 20px);
+  --fs-sm: clamp(18px, 1vw, 24px);
+  --fs-md: clamp(16px, 1.4vw, 28px);
+  --fs-lg: clamp(20px, 2vw, 40px);
+  --fs-xl: clamp(28px, 3vw, 64px);
+  --fs-xxl: clamp(36px, 4.2vw, 92px);
+
+  --radius-xl: 22px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  color: var(--text-900);
+  background: var(--brand-100);
+}
+
+.screen {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  gap: min(1.4vh, 16px);
+  padding: min(2dvh, 24px) min(2dvw, 28px);
+  box-sizing: border-box;
+}
+
+/* Header */
+header,
+.agenda header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  background: var(--bg);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.logo img {
+  height: clamp(60px, 5vw, 60px);
+}
+.title {
+ 
+  text-align: center;
+  font-weight: 800;
+  font-size: var(--fs-xl);
+  color: var(--brand-900);
+ text-shadow: 3px 3px 4px rgba(0,0,0,0.5);
+}
+.datetime {
+  text-align: right;
+  font-size: var(--fs-md);
+  line-height: 1.15;
+}
+
+/* Main */
+main {
+  margin-top: 30px;
+  height: 90%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: min(1.4vh, 16px);
+  min-height: 0;
+}
+
+
+
+/* Highlight (Slideshow com legenda sobreposta) */
+.highlight {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:#e6f4f1; /* fundo para quando usar contain */
+}
+
+.slideshow figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.slideshow figure.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 🔹 imagens e vídeos SEMPRE inteiros, sem cortar */
+.slideshow img,
+.slideshow video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  background:#e6f4f1;
+}
+
+/* Legenda sobreposta */
+.slideshow figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  font-size: var(--fs-sm);
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+  backdrop-filter: blur(2px);
+}
+
+/* Agenda */
+.agenda {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  overflow: hidden;
+}
+
+
+.agenda header {
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.agenda h3 {
+  font-weight: bold;
+  margin: auto;
+  font-size: 1.2rem;
+  text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.76);
+}
+
+/* Mini slideshow dentro da agenda */
+.mini-slideshow {
+  margin-top: 29px;
+  position: relative;
+  width: 100%;
+  height: max-content;
+  overflow: hidden;
+}
+
+/* esconde todas as figuras menos a ativa */
+.mini-slideshow figure {
+  display: none;
+  margin: 0;
+}
+
+.mini-slideshow figure.active {
+  display: block;
+}
+
+.mini-slideshow img {
+  width: 100%;   /* estica na largura */
+  height: 14rem;  /* mantém proporção */
+  display: block;
+  border-radius: var(--radius-xl);
+}
+
+/* Footer */
+footer {
+  margin-top: -20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+footer .contacts {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer .contacts .pill {
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: .5em .9em;
+  font-size: var(--fs-sm);
+}
+
+footer .qr {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border: 6px solid #f1f5f9;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+
+footer .qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Media Query para Chromebook 11.6" */
+@media screen and (max-width: 1000px) and (max-height: 768px) {
+  html, body, .screen {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .highlight .slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e6f4f1; /* fundo para manter contain */
+  }
+
+  .highlight .slideshow img,
+  .highlight .slideshow video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background:#e6f4f1;
+  }
+
+  header, footer, .agenda header {
+    height: 50px;
+    padding: 0 12px;
+  }
+
+  .title {
+    font-size: clamp(20px, 2vw, 26px);
+  }
+
+  .datetime {
+    font-size: clamp(14px, 1.6vw, 18px);
+  }
+  .time {
+    background-color: #1f7a35;
+  }
+
+  .agenda h3 {
+    font-size: clamp(16px, 1.8vw, 22px);
+  }
+
+  footer .contacts .pill {
+    font-size: clamp(12px, 1.4vw, 16px);
+    padding: .4em .7em;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  html, body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .screen {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    height: auto;
+    gap: 16px;
+  }
+
+ 
+  .logo img {
+    height: 40px;
+  }
+
+  .title {
+    font-size: var(--fs-lg);
+    text-align: center;
+  }
+
+  .datetime {
+    font-size: var(--fs-sm);
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .highlight,
+  .agenda {
+    height: auto;
+    width: 100%;
+  }
+
+  .slideshow,
+  .slideshow figure,
+  .slideshow img,
+  .slideshow video {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+
+  .slideshow figcaption {
+    font-size: var(--fs-xs);
+    padding: 0.4em 0.8em;
+  }
+
+  .mini-slideshow img {
+    height: auto;
+    object-fit: contain;
+  }
+  .mini-slideshow {
+  margin-top: 5px;
+  }
+
+  footer {
+    
+    align-items: flex-start;
+    gap: 12px;
+    height: auto;
+    padding: 12px;
+  }
+
+  footer .contacts {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  footer .qr {
+    width: 80px;
+    height: 80px;
+  }
+
+  footer .contacts .pill {
+    font-size: var(--fs-xs);
+    padding: 0.5em 1em;
+  }
+}
